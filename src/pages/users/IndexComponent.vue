@@ -1,35 +1,45 @@
 <template>
-  <CardViewComponent></CardViewComponent>
+  <div class="container mt-5">
+    <div class="row g-3">
+      <div v-if="loading" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div v-else class="col-md-4" v-for="user in users" :key="user.id">
+        <CardViewComponent :user="user"></CardViewComponent>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { ref } from 'vue';
-import CardViewComponent from '../../components/users/CardViewComponent.vue';
+import axios from "axios";
+import { ref } from "vue";
+import CardViewComponent from "../../components/users/CardViewComponent.vue";
 export default {
-    components:{
-        CardViewComponent
-    },
-   
+  components: {
+    CardViewComponent,
+  },
+
   setup() {
     const users = ref([]);
-    function getUsers()
-    {
-        axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then(function (response) {
-        // handle success
-        users.value = response.data;
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
+    const loading = ref(true);
+    function getUsers() {
+      axios
+        .get("https://jsonplaceholder.typicode.com/users")
+        .then(function (response) {
+          // handle success
+          users.value = response.data;
+          loading.value = false;
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
     }
 
-    getUsers()
+    getUsers();
 
-    return {users}
+    return { users };
   },
 };
 </script>

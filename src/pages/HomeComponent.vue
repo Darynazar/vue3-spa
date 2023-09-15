@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-">
+      <div class="col-md-6">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quis
           ipsa recusandae. Dolore hic sint voluptate amet eos repudiandae sed
