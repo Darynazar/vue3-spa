@@ -14,6 +14,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">body : {{ post.body }}</li>
           </ul>
+         
         </div>
       </div>
     </div>
