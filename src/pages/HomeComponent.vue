@@ -9,6 +9,7 @@
         </p>
 
         <router-link class="btn btn-dark" :to="{name:'users'}">Users</router-link>
+        <router-link class="btn btn-light ms-2" :to="{name:'posts'}">Posts</router-link>
       </div>
     </div>
   </div>
