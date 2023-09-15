@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div  class="container mt-5">
     <div class="row g-3">
       <div v-if="loading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -8,7 +8,10 @@
         <CardViewComponent :user="user"></CardViewComponent>
       </div>
     </div>
+
   </div>
+  <router-view></router-view>
+
 </template>
 
 <script>
@@ -23,6 +26,8 @@ export default {
   setup() {
     const users = ref([]);
     const loading = ref(true);
+
+
     function getUsers() {
       axios
         .get("https://jsonplaceholder.typicode.com/users")
@@ -39,7 +44,7 @@ export default {
 
     getUsers();
 
-    return { users };
+    return { users, loading };
   },
 };
 </script>

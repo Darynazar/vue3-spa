@@ -7,6 +7,8 @@
           ipsa recusandae. Dolore hic sint voluptate amet eos repudiandae sed
           repellat placeat, cupiditate quae quam ex, natus minima debitis quos.
         </p>
+
+        <router-link class="btn btn-dark" :to="{name:'users'}">Users</router-link>
       </div>
     </div>
   </div>
