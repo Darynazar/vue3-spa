@@ -20,6 +20,7 @@
               <label class="form-label">Body</label>
               <textarea
                 class="form-control"
+                rows="6"
                 v-model.lazy.trim="form.body"
               ></textarea>
               <div class="form-text text-danger">
@@ -47,20 +48,28 @@
 import axios from "axios";
 import { reactive, ref } from "vue";
 import Swal from "sweetalert2";
+import { useRoute } from "vue-router";
 
 export default {
   setup() {
+    const form = reactive({
+      title: "",
+      titleErrorText: "",
+      body: "",
+      bodyErrorText: "",
+    });
+
     const loading = ref(false);
 
-    // const post
+    const route = useRoute();
 
     function getUser() {
       axios
         .get(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
         .then(function (response) {
           // handle success
-          post.value = response.data;
-          loading.value = false;
+          form.title = response.data.title;
+          form.body = response.data.body;
         })
         .catch(function (error) {
           // handle error
@@ -69,13 +78,6 @@ export default {
     }
 
     getUser();
-
-    const form = reactive({
-      title: "",
-      titleErrorText: "",
-      body: "",
-      bodyErrorText: "",
-    });
 
     function validate() {
       if (form.title === "") {
@@ -91,13 +93,14 @@ export default {
 
       if (form.title !== "" && form.body !== "") {
         loading.value = true;
-        createPost();
+        updatePost();
       }
     }
 
-    function createPost() {
+    function updatePost() {
       axios
-        .post("https://jsonplaceholder.typicode.com/posts", {
+        .put(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`, {
+          id: route.params.id,
           title: form.title,
           body: form.body,
           userId: 1,
@@ -107,7 +110,7 @@ export default {
           // handle success
           Swal.fire({
             title: "Thanks",
-            text: "post created",
+            text: "post update",
             icon: "success",
             confirmButtonText: "ok",
           });

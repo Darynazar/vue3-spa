@@ -6,7 +6,7 @@ import ShowUserComponent from "./pages/users/ShowComponent.vue";
 import IndexPostComponent from "./pages/posts/IndexComponent.vue";
 import ShowPostComponent from "./pages/posts/ShowComponent.vue";
 import CreatePostComponent from "./pages/posts/CreateComponent.vue";
-import EditPostComponent from "./pages/posts/CreateComponent.vue";
+import EditPostComponent from "./pages/posts/EditComponent.vue";
 
 const routes = [
   { path: "/", component: HomeComponent },
