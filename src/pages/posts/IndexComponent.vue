@@ -1,4 +1,5 @@
 <template>
+  <router-link class="btn btn-dark" :to="{ name: 'createPost' }">Create Post</router-link>
   <div class="container mt-5">
     <div class="row g-3">
       <div v-if="loading" class="spinner-border" role="status">
@@ -14,7 +15,6 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">body : {{ post.body }}</li>
           </ul>
-         
         </div>
       </div>
     </div>
@@ -27,8 +27,6 @@ import axios from "axios";
 import { ref } from "vue";
 
 export default {
-  
-
   setup() {
     const posts = ref([]);
     const loading = ref(true);
