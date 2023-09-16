@@ -44,68 +44,71 @@
 </template>
   
   <script>
-  import axios from "axios";
-  import { reactive, ref } from "vue";
-  import Swal from 'sweetalert2';
-  
-  export default {
-    setup() {
-      const loading = ref(false);
-      const form = reactive({
-        user_id: "",
-        user_idErrorText: "",
-        name: "",
-        nameErrorText: "",
-      });
-  
-      console.log(form.user_id, form.name);
-  
-      function validate() {
-        if (form.user_id === "") {
-          form.user_idErrorText = "user_id is required";
-        } else {
-          form.user_idErrorText = "";
-        }
-        if (form.name === "") {
-          form.nameErrorText = "name is required";
-        } else {
-          form.nameErrorText = "";
-        }
-  
-        if (form.user_id !== "" && form.name !== "") {
-          loading.value = true;
-          createPost();
-        }
+import axios from "axios";
+import { reactive, ref } from "vue";
+import Swal from "sweetalert2";
+
+export default {
+  setup() {
+    const loading = ref(false);
+    const form = reactive({
+      user_id: "",
+      user_idErrorText: "",
+      name: "",
+      nameErrorText: "",
+    });
+
+    console.log(form.user_id, form.name);
+    const headers = {
+      "Content-type":"application/json",
+    };
+
+    function validate() {
+      if (form.user_id === "") {
+        form.user_idErrorText = "user_id is required";
+      } else {
+        form.user_idErrorText = "";
       }
-  
-      function createPost() {
-        axios
-          .post("http://127.0.0.1:8000/api/board", {
-            user_id: form.user_id,
-            name: form.name,
-            userId: 1,
-          })
-          
-          .then(function () {
-            loading.value = false;
-            // handle success
-            Swal.fire({
-              title:"Thanks",
-              text:"post created",
-              icon:"success",
-              confirmButtonText:"ok"
-            })
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
+      if (form.name === "") {
+        form.nameErrorText = "name is required";
+      } else {
+        form.nameErrorText = "";
+      }
+
+      if (form.user_id !== "" && form.name !== "") {
+        loading.value = true;
+        createPost();
+      }
+    }
+
+    function createPost() {
+      axios
+        .post("http://127.0.0.1:8000/api/board", {
+          user_id: form.user_id,
+          name: form.name,
+
+        }, {headers})
+
+        .then(function () {
+          loading.value = false;
+          // handle success
+          Swal.fire({
+            title: "Thanks",
+            text: "post created",
+            icon: "success",
+            confirmButtonText: "ok",
           });
-      }
-  
-      return { form, validate, loading };
-    },
-  };
-  </script>
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+    }
+
+    return { form, validate, loading };
+  },
+};
+</script>
   
   <style>
 </style>

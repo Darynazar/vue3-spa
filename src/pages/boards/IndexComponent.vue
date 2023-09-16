@@ -1,7 +1,9 @@
 <template>
-    <router-link class="btn btn-dark" :to="{ name: 'createBoard' }">Create Board</router-link>
     <div class="container mt-5">
+    <router-link class="btn btn-dark col-sm-2 mb-2" :to="{ name: 'createBoard' }">Create Board</router-link>
+
       <div class="row g-3">
+
         <div v-if="loading" class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
