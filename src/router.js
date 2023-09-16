@@ -8,6 +8,13 @@ import ShowPostComponent from "./pages/posts/ShowComponent.vue";
 import CreatePostComponent from "./pages/posts/CreateComponent.vue";
 import EditPostComponent from "./pages/posts/EditComponent.vue";
 
+import IndexBoardComponent from "./pages/boards/IndexComponent.vue";
+
+import CreateBoardComponent from "./pages/boards/CreateComponent.vue";
+
+
+
+
 const routes = [
   { path: "/", component: HomeComponent },
   { path: "/users", name: "users", component: IndexUserComponent },
@@ -17,6 +24,11 @@ const routes = [
   { path: "/posts/:id", name: "postId", component: ShowPostComponent },
   { path: "/posts/create", name: "createPost", component: CreatePostComponent },
   { path: "/posts/edit/:id", name: "editPost", component: EditPostComponent },
+
+  { path: "/boards", name: "boards", component: IndexBoardComponent },
+  { path: "/boards/:id", name: "boardId", component: IndexBoardComponent },
+  { path: "/boards/create", name: "createBoard", component: CreateBoardComponent },
+  // { path: "/posts/edit/:id", name: "editPost", component: EditPostComponent },
 
   // { path: "/posts", component: PostComponent },
 ];

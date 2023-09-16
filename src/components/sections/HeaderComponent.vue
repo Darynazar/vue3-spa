@@ -25,6 +25,9 @@
             <li class="nav-item">
                 <router-link to="/posts" class="nav-link">Posts</router-link>
             </li>
+            <li class="nav-item">
+                <router-link to="/Boards" class="nav-link">boards</router-link>
+            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
