@@ -9,7 +9,7 @@ import CreatePostComponent from "./pages/posts/CreateComponent.vue";
 import EditPostComponent from "./pages/posts/EditComponent.vue";
 
 import IndexBoardComponent from "./pages/boards/IndexComponent.vue";
-
+import ShowBoardComponent from "./pages/boards/ShowComponent.vue";
 import CreateBoardComponent from "./pages/boards/CreateComponent.vue";
 
 
@@ -26,7 +26,7 @@ const routes = [
   { path: "/posts/edit/:id", name: "editPost", component: EditPostComponent },
 
   { path: "/boards", name: "boards", component: IndexBoardComponent },
-  { path: "/boards/:id", name: "boardId", component: IndexBoardComponent },
+  { path: "/boards/:id", name: "boardId", component: ShowBoardComponent },
   { path: "/boards/create", name: "createBoard", component: CreateBoardComponent },
   // { path: "/posts/edit/:id", name: "editPost", component: EditPostComponent },
 
