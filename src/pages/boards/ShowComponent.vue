@@ -25,16 +25,17 @@
         <div v-if="loading" class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
-        <div v-else class="col-md-4" v-for="board in board.lists" :key="board.id">
+        <div v-else class="col-md-4" v-for="list in board.lists" :key="list.id">
           <div class="card">
             <div class="card-header">
               <!-- <router-link :to="{ name: 'boardId', params: { id: board.id } }"> -->
-                {{board.name}}
+                {{list.name}}
                 <!-- </router-link> -->
+              <div @click="deleteBoard" class="btn btn-sm me-4 btn-danger">Delete</div>
 
             </div>
             <ul class="list-group list-group-flush">
-              <template v-for="card in board.cards" :key="card.id">
+              <template v-for="card in list.cards" :key="card.id">
                  <li class="list-group-item">
                 <ShowCardComponent :card="card"></ShowCardComponent>
               </li>
